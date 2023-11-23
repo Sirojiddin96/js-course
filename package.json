@@ -1,0 +1,16 @@
+{
+  "name": "course-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec http-server -c-1 -p 8080"
+  },
+  "author": "Karimov Sirojiddin",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1"
+  }
+}
