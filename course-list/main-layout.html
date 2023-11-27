@@ -8,15 +8,16 @@
       </div>
     </div>
     <div class="form-container">
-      <form action="/auth/login.html" method="post">
-        <input type="text" name="email" placeholder="Enter your email" />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-        />
-        <button id="btn" type="button" onclick="goToLogin()">Submit</button>
-      </form>
+      <div style="display: flex; justify-content: end">
+        <button type="button" onclick="clearName()">Reset</button>
+      </div>
+      <input
+        type="text"
+        id="inputName"
+        name="name"
+        placeholder="Add member's name"
+      />
+      <button id="btn">Add Name</button>
     </div>
   </div>
   <div class="course-layout">

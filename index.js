@@ -16,11 +16,11 @@ fetch("./course-list/main-layout.html")
   })
   .catch((err) => console.log(err));
 
-fetch("./auth/login.html")
-  .then((response) => {
-    return response.text();
-  })
-  .then((data) => {
-    document.querySelector("login").innerHTML = data;
-  })
-  .catch((err) => console.log(err));
+// fetch("./auth/login.html")
+//   .then((response) => {
+//     return response.text();
+//   })
+//   .then((data) => {
+//     document.querySelector("login").innerHTML = data;
+//   })
+//   .catch((err) => console.log(err));
