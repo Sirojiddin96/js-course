@@ -18,12 +18,24 @@ body {
 .left-side {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     width: 287px;
     height: 500px;
     flex-shrink: 0;
     border-radius: 12px;
     background: #D9D9D9;
     text-decoration: wavy;
+}
+
+.empty-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 287px;
+    height: 500px;
+    border-radius: 12px;
+    background: #D9D9D9;
 }
 
 .left-side>button {
@@ -43,6 +55,10 @@ body {
     font-size: 1.1rem;
     font-family: 'Poppins';
     font-weight: 900;
+}
+
+.hide {
+    display: none;
 }
 
 .right-side {
@@ -78,16 +94,13 @@ body {
     padding: 0rem 0.5rem;
     border-radius: 0.8rem;
     padding-top: 0.5rem;
-}
-
-.form-container form {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
     overflow: hidden;
 }
 
-form input {
+.form-container input {
     padding: 0.7rem 0.5rem;
     outline: none;
     border: 1px solid transparent;
@@ -95,13 +108,13 @@ form input {
     font-size: 1rem;
 }
 
-input[type=submit] {
+.form-container button {
     padding: .5rem;
     border: 0 none;
     cursor: pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    margin-top: 1rem;
+    margin-top: 0.1rem;
 }
 
 .display-name {
@@ -238,4 +251,8 @@ input[type=submit] {
 
 .share {
     background-color: #1D1C5E !important;
+}
+
+.login-layout {
+    border: 1px solid red !important;
 }

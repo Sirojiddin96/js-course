@@ -1,5 +1,12 @@
 window.onload = async function () {
-  // document.getElementById() code here
+  const url = new URL(window.location.href);
+  const userInfo = {
+    username: url.searchParams.get("userNameValue"),
+  };
+  console.log(userInfo);
+
+  const keep = localStorage.getItem("remember");
+  console.log(keep);
   let initialName = "Welcome";
   const rightContainer = document.getElementById("rightSide");
   var q = document.getElementById("names");
@@ -10,19 +17,16 @@ window.onload = async function () {
   const newArr = new Array();
   newArr[0] = 1;
   newArr[1] = 3;
-  console.log(newArr);
 
   // array doim 0 index dan boshlanadi.
-  const names = []; // bo'sh array
-  names[0] = "Abdulla";
-  names[1] = "Mirzohid";
-  names[2] = "Sirojiddin";
-  names[3] = "Odilxon";
-  names[4] = "Jahongir";
-  names[5] = "John";
-  names[6] = "Sejong";
+  let names = []; // bo'sh array
 
   const leftSide = document.getElementById("leftSide");
+  const span = document.createElement("span");
+  span.id = "emptyArea";
+  span.className = "empty-box";
+  span.innerHTML = "Ro'yhatga olish boshlanmadi";
+
   for (let index = 0; index < names.length; index++) {
     const btn = document.createElement("button");
     btn.id = "user_" + index;
@@ -95,7 +99,50 @@ window.onload = async function () {
     x.appendChild(xx);
     multiple.appendChild(box);
   }
+
+  const addName = document.getElementById("btn");
+  let input = "";
+  const message = document.querySelector("#inputName");
+  message.addEventListener("input", function (event) {
+    input = event.target.value;
+  });
+
+  addName.addEventListener("click", function () {
+    names = [];
+    let l = initialName + " " + input;
+    q.innerHTML = l;
+    names.push(input);
+
+    if (names.length > 0) {
+      span.innerHTML = "";
+    }
+
+    for (let index = 0; index < names.length; index++) {
+      const btn = document.createElement("button");
+      btn.id = "user_" + index;
+      btn.className = "btn-name";
+      btn.innerHTML = names[index];
+      leftSide.append(btn);
+
+      btn.addEventListener("click", function () {
+        q.innerHTML = `${initialName} ${names[index]}`;
+      });
+    }
+    if (names.length === 0) {
+      leftSide.append(span);
+      leftSide.className = "empty-left";
+      return;
+    } else {
+      leftSide.className = "left-side";
+    }
+  });
+  if (names.length === 0) {
+    leftSide.append(span);
+    leftSide.className = "empty-left";
+    return;
+  }
 };
+
 function addName(name) {
   var q = document.getElementById("names");
   initialName = name;
@@ -105,4 +152,9 @@ function addName(name) {
 function clearName() {
   var q = document.getElementById("names");
   q.innerHTML = "Welcome";
+}
+
+function goToLogin() {
+  console.log("Click");
+  window.location.replace("/auth/login.html");
 }
