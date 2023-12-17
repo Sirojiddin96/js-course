@@ -100,6 +100,172 @@ window.onload = async function () {
     multiple.appendChild(box);
   }
 
+  const numbersContainer = document.createElement("div");
+  numbersContainer.style.display = "flex";
+  numbersContainer.style.flexDirection = "row";
+  numbersContainer.style.gap = "1rem";
+  for (let i = 0; i < 6; i++) {
+    const num = document.createElement("input");
+    num.id = "inputId" + i;
+    num.style.width = "50px";
+    num.style.height = "50px";
+    num.style.display = "flex";
+    num.style.fontSize = "2rem";
+    num.style.justifyContent = "center";
+    num.style.alignItems = "center";
+    num.style.textAlign = "center";
+    num.style.backgroundColor = "yellow";
+    num.style.borderRadius = "30%";
+    numbersContainer.append(num);
+    num.innerHTML = "";
+  }
+
+  karraLayout.append(numbersContainer);
+  const inputId = document.getElementById("inputId0");
+  inputId.addEventListener("input", function (e) {
+    let inputValue = e.target.value.split("");
+    inputValue.forEach((num, idx) => {
+      document.getElementById(`inputId${idx}`).value = num;
+    });
+  });
+
+  const course = [
+    {
+      id: "1",
+      name: "Javascripti",
+      length: "3h 26mins",
+      price: "200.000",
+      startDate: "2023.11.17",
+      student: "Sirojiddin",
+      type: "online",
+      img: "/course-list/js.png",
+    },
+    {
+      id: "2",
+      name: "Javascripti",
+      length: "3h 26mins",
+      price: "200.000",
+      startDate: "2023.11.17",
+      student: "Sirojiddin",
+      type: "online",
+      img: "/course-list/js.png",
+    },
+    {
+      id: "3",
+      name: "Javascripti",
+      length: "3h 26mins",
+      price: "200.000",
+      startDate: "2023.11.17",
+      student: "Sirojiddin",
+      type: "online",
+      img: "/course-list/js.png",
+    },
+    {
+      id: "3",
+      name: "Javascripti",
+      length: "3h 26mins",
+      price: "200.000",
+      startDate: "2023.11.17",
+      student: "Sirojiddin",
+      type: "online",
+      img: "/course-list/js.png",
+    },
+    {
+      id: "4",
+      name: "Javascripti",
+      length: "3h 26mins",
+      price: "200.000",
+      startDate: "2023.11.17",
+      student: "Sirojiddin",
+      type: "online",
+      img: "/course-list/js.png",
+    },
+  ];
+
+  const courseLayout = document.getElementById("courseLayout");
+  for (let i = 0; i < course.length; i++) {
+    // Big Container
+    const courseElement = document.createElement("div");
+    const courseDetails = document.createElement("div");
+    const imageContainer = document.createElement("div");
+    const img = document.createElement("img");
+
+    courseElement.className = "course";
+    imageContainer.className = "image-container";
+    courseElement.id = "course";
+    courseDetails.id = "courseDetail";
+    courseDetails.className = "course-details";
+    courseLayout.append(courseElement);
+    courseElement.append(imageContainer);
+    courseElement.append(courseDetails);
+
+    imageContainer.append(img);
+    img.src = course[i].img;
+    //Inner container
+    const top = document.createElement("div");
+    const left = document.createElement("div");
+    const right = document.createElement("div");
+    const bottom = document.createElement("div");
+
+    top.id = "top";
+    left.id = "left";
+    right.id = "left";
+    bottom.id = "bottom";
+
+    top.className = "top";
+    left.className = "left";
+    right.className = "right";
+    bottom.className = "bottom";
+
+    courseDetails.append(top);
+    courseDetails.append(bottom);
+    top.append(left);
+    top.append(right);
+
+    // Buttons
+    const buyBtn = document.createElement("button");
+    buyBtn.innerHTML = "Buy";
+    const addToCart = document.createElement("button");
+    addToCart.innerHTML = "Add To Cart";
+    const share = document.createElement("button");
+    share.innerHTML = "Share";
+    share.className = "share";
+
+    // top.append(buyBtn);
+    bottom.append(addToCart);
+    bottom.append(share);
+
+    courseElement.className = "course";
+    courseLayout.append(courseElement);
+
+    // Left values
+    const name = document.createElement("span");
+    const time = document.createElement("span");
+    const price = document.createElement("span");
+
+    // Right values
+    const startDate = document.createElement("span");
+    const student = document.createElement("span");
+    const type = document.createElement("span");
+
+    name.innerHTML = course[i].name;
+    time.innerHTML = course[i].length;
+    price.innerHTML = course[i].price;
+
+    startDate.innerHTML = course[i].startDate;
+    student.innerHTML = course[i].student;
+    type.innerHTML = course[i].type;
+
+    left.append(buyBtn);
+    left.append(name);
+    left.append(time);
+    left.append(price);
+
+    right.append(startDate);
+    right.append(student);
+    right.append(type);
+  }
+
   const addName = document.getElementById("btn");
   let input = "";
   const message = document.querySelector("#inputName");
@@ -157,4 +323,8 @@ function clearName() {
 function goToLogin() {
   console.log("Click");
   window.location.replace("/auth/login.html");
+}
+
+function goToTodo() {
+  window.location.replace("/features/todo.html");
 }
