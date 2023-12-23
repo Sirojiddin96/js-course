@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/features.css" />
+    <title>To do</title>
+  </head>
+  <body id="body">
+    <div class="todo-layout">
+      <div class="todo-header">
+        <span>Make your plan to make your day productive</span>
+        <div>
+          <button class="btn-create-todo" onclick="openCreateTodoForm()">
+            Create a Todo
+          </button>
+          <button onclick="goToHome()">Home</button>
+        </div>
+      </div>
+      <div class="todo-body">
+        <div class="todo-container">
+          <div class="todo-list-box" id="onProgressList">
+            <span>In Progress Todo List</span>
+          </div>
+          <div class="todo-list-box" id="completedTasks">
+            <span>Completed Todo List</span>
+          </div>
+          <div class="todo-list-box" id="extendedTasks">
+            <span>Extended Todo List</span>
+          </div>
+          <div class="todo-list-box" id="missedTasks">
+            <span>Missed Todo List</span>
+          </div>
+          <!--  -->
+        </div>
+        <div class="todo-list-box todo-result" id="todoResult">
+          <div class="todo-result-header">
+            <span>Result</span>
+            <!-- <div class="todo-open-result close" onclick="closeResult()">
+              Close
+            </div> -->
+          </div>
+          <div class="todo-completed-result">
+            <div class="todo-info" id="completedTitle">
+              <span>To do</span>
+              <span class="todo-count" id="totalTodoCount"></span>
+            </div>
+          </div>
+          <div class="todo-completed-result">
+            <div class="todo-inner-result" id="completedTodoList"></div>
+            <div class="todo-info" id="completedTitle">
+              <span>Completed</span>
+              <span class="todo-count" id="completedTaskCount"></span>
+            </div>
+          </div>
+          <div class="todo-completed-result">
+            <div class="todo-inner-result" id="extendedTodoList"></div>
+            <div class="todo-info" id="extendedTodoTitle">
+              <span>Extended</span>
+              <span class="todo-count" id="extendedTodoCount"></span>
+            </div>
+          </div>
+          <div class="todo-completed-result">
+            <div class="todo-inner-result" id="missedTodoList"></div>
+            <div class="todo-info" id="missedTodoListTitle">
+              <span>Missed</span>
+              <span id="missedTaskCount"></span>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="todo-open-result" id="btnOpenResult" onclick="openResult()">
+          open result
+        </div> -->
+      </div>
+    </div>
+    <div class="create-form-backdrop" id="backdrop">
+      <div class="backdrop-inner" id="backdropInner">
+        <div class="close-backdrop-box" onclick="closeCreateTodoForm()">
+          <img src="/assets/close-create-todo.svg" alt="" />
+        </div>
+        <div class="todo-list-box create-todo-form" id="createTodoForm">
+          <span>Create a To do</span>
+          <div class="todo-input">
+            <input type="text" id="todoInput" />
+          </div>
+          <div class="todo-create-form">
+            <input type="datetime-local" id="deadline" />
+            <button class="select-time">Select time</button>
+          </div>
+          <button class="todo-btn-add" id="addTodo">Add Plan</button>
+        </div>
+      </div>
+    </div>
+    <script src="todo-utils.js"></script>
+    <script src="todo.js"></script>
+  </body>
+</html>
