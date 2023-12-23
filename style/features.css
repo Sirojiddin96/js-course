@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2e2e2;
+    font-family: 'Poppins';
+    position: relative;
+}
+
+.create-form-backdrop {
+    display: none;
+    width: 100%;
+    flex: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    min-width: 1440px;
+}
+
+.backdrop-inner {
+    width: 28rem;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    border-radius: 0.4rem;
+    z-index: 1000
+}
+
+.create-todo-form {
+    width: 100% !important;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.close-backdrop-box {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.close-backdrop-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.todo-layout {
+    height: 100vh;
+    padding: 1.2rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 1440px;
+}
+
+.todo-header {
+    padding: 0.8rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+    background-color: rgb(20, 171, 65);
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-header button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-create-todo {
+    background-color: #063656 !important;
+    font-size: 1rem !important;
+    padding: 0.5rem 0.8rem;
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+}
+
+.todo-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1.2rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    background-color: #fff;
+    /* background-color: #F4D03F;
+    background-image: linear-gradient(132deg, #16A085 0%, #82db9d 100%); */
+
+    box-sizing: border-box;
+    position: relative;
+}
+
+.todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.create-todo {
+    display: none !important;
+}
+
+.todo-list-box {
+    width: 25%;
+    height: initial;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 0.6rem;
+}
+
+.todo-list-box span {
+    color: #063656;
+    font-weight: 600;
+}
+
+.todo-create-form {
+    display: flex;
+    height: inherit;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    box-sizing: border-box;
+}
+
+.select-time {
+    flex: 1;
+    height: 2rem;
+    border: none;
+    background-color: #0e841e;
+    font-family: 'Poppins';
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.7rem;
+    border-radius: 0.6rem;
+
+}
+
+.todo-create-form input[type="datetime-local"i] {
+    border: 1px solid rgb(216, 216, 216);
+    padding: 0.5rem;
+    outline: 0;
+    border-radius: 0.6rem;
+    font-weight: 500;
+}
+
+/* The container */
+.container {
+    width: 2rem;
+    display: flex;
+    height: 1.7rem;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.7rem;
+    width: 1.7rem;
+    background-color: #e0e0e0;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+}
+
+/* On mouse-over, add a grey background color 
+.container:hover input~.check-mark {
+    background-color: #659168;
+}
+*/
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.check-mark {
+    background-color: #0e841e;
+}
+
+/* Create the check-mark/indicator (hidden when not checked) */
+.check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the check-mark when checked */
+.container input:checked~.check-mark:after {
+    display: block;
+}
+
+/* Style the check-mark/indicator */
+.container .check-mark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.todo-input {
+    flex: 1;
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+
+.todo-input input {
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+.todo-btn-add {
+    border: none;
+    cursor: pointer;
+    height: 2.5rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    background-color: rgb(12, 138, 71);
+    color: #fff;
+}
+
+.todo-on-progress {
+    border: 1.5px solid rgb(13, 106, 134) !important;
+}
+
+.todo-extended {
+    border: 1.5px solid rgb(170, 125, 11) !important;
+    color: rgb(170, 125, 11) !important;
+}
+
+.todo-extended-text {
+    color: rgb(170, 125, 11) !important;
+}
+
+.todo-extended input[type="datetime-local"i] {
+    border: 1.5px solid rgb(170, 125, 11) !important;
+    color: rgb(170, 125, 11) !important;
+}
+
+.todo-on-progress input[type="datetime-local"i] {
+    border: 1px solid rgb(13, 106, 134) !important;
+    color: #063656 !important;
+}
+
+.on-progress-text {
+    flex: 1 !important;
+    color: #063656 !important;
+    font-size: 0.8rem !important;
+}
+
+.completed-todo-list {
+    display: flex;
+    gap: 0.7rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1.5px solid rgb(17, 168, 32);
+}
+
+.completed-todo-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #59cd68;
+}
+
+.completed-todo-list input[type="datetime-local"i] {
+    border: 1px solid rgb(216, 216, 216);
+    padding: 0.5rem;
+    outline: 0;
+    border-radius: 0.6rem;
+    font-weight: 500;
+    color: #59cd68;
+    border: 1px solid #59cd68;
+}
+
+.todo-not-finished {
+    border: 1.5px solid red;
+}
+
+.todo-not-finished-text {
+    color: red !important;
+}
+
+.todo-not-finished input[type="datetime-local"i] {
+    border: 1px solid red;
+    color: red;
+}
+
+.not-finished-checkbox .container input:disabled~.check-mark {
+    background-color: red;
+}
+
+.todo-not-finished {
+    color: red !important;
+}
+
+.not-completed-text {
+    color: red !important;
+}
+
+.hide-checkbox {
+    display: none;
+}
+
+.todo-completed-result {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgb(215, 215, 215);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.todo-inner-result {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    left: 0;
+    padding-left: .5rem;
+    box-sizing: border-box;
+    border-radius: 0.4rem;
+    position: absolute;
+    z-index: 1;
+}
+
+.todo-completed-result .todo-info {
+    z-index: 10 !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    left: 0.2rem;
+    position: absolute;
+    color: #0b6f67;
+    font-weight: 600;
+}
+
+.todo-result {
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+    background-color: #fff;
+    right: 1rem;
+}
+
+.openTodoResult {
+    position: absolute;
+    bottom: 1rem;
+    background-color: #fff;
+    right: 1rem;
+}
+
+@keyframes slideLeft {
+    0% {
+        right: -80%;
+        /* Start position: completely to the right */
+    }
+
+    100% {
+        right: 0;
+        /* End position: completely to the left */
+    }
+}
+
+.todo-open-result {
+    bottom: 1rem;
+    position: absolute;
+    background-color: #0b7629;
+    color: #fff;
+    padding: 0.1rem 0.3rem;
+    right: 1rem;
+    border-radius: 0.3rem;
+}
+
+.todo-result-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.closeTodoResult {
+    position: absolute;
+    bottom: 1rem;
+    background-color: #fff;
+    transition: left 2s ease-in-out;
+}
+
+.left {
+    left: 0;
+}
+
+.close {
+    bottom: 0;
+}
+
+@keyframes slideRight {
+    100% {
+        right: -20%;
+        /* End position: completely to the left */
+    }
+}
