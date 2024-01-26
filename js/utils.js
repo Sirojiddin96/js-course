@@ -1,9 +1,19 @@
 window.onload = async function () {
-  const url = new URL(window.location.href);
-  const userInfo = {
-    username: url.searchParams.get("userNameValue"),
-  };
-  console.log(userInfo);
+  const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
+  if (loginInfo === null || !loginInfo.loggedIn) {
+    return window.location.replace("/auth/login.html");
+  }
+
+  const logoutText = document.getElementById("logout");
+  const loginText = document.getElementById("login");
+
+  if (loginInfo !== null) {
+    logoutText.style.display = "flex";
+    loginText.style.display = "none";
+  } else {
+    loginText.style.display = "none";
+    logoutText.style.display = "flex";
+  }
 
   const keep = localStorage.getItem("remember");
   console.log(keep);
@@ -26,6 +36,31 @@ window.onload = async function () {
   span.id = "emptyArea";
   span.className = "empty-box";
   span.innerHTML = "Ro'yhatga olish boshlanmadi";
+
+  const headerDiv = document.getElementById("userName");
+  headerDiv.style.gap = "0.5rem";
+  headerDiv.style.display = "flex";
+
+  const userNameValue = loginInfo.name.split(""); //Mirzohid->['M','i',r','z','o','h','i','d']
+  console.log(userNameValue);
+  for (let i = 0; i < userNameValue.length; i++) {
+    const userNames = document.createElement("span");
+    userNames.innerHTML = userNameValue[i];
+    userNames.id = "userName";
+    userNames.style.width = "20px";
+    userNames.style.height = "20px";
+    userNames.style.display = "flex";
+    userNames.style.justifyContent = "center";
+    userNames.style.alignItems = "center";
+
+    userNames.style.borderRadius = "50%";
+    userNames.style.backgroundColor = "green";
+
+    userNames.className = "users";
+    headerDiv.append(userNames);
+  }
+
+  // userNames.innerHTML = userNameValue[i];
 
   for (let index = 0; index < names.length; index++) {
     const btn = document.createElement("button");
@@ -100,6 +135,147 @@ window.onload = async function () {
     multiple.appendChild(box);
   }
 
+  //  console.log("Hello");
+
+  // [({}, {})]; // array of object
+
+  const users = [
+    { name: "Mirzohid", age: "20", hometown: "Namangan", gender: "male" },
+    { name: "Sirojiddin", age: "27", hometown: "Seul", gender: "male" },
+  ];
+
+  const courseList = [
+    {
+      courseName: "JavaScript",
+      time: "3h",
+      price: 200000,
+      deadline: "January",
+      teacher: "Sirojiddin",
+      type: "online",
+    },
+    {
+      courseName: "React Native",
+      time: "3h",
+      price: 1000000,
+      deadline: "February",
+      teacher: "Mirzohid",
+      type: "online",
+    },
+    {
+      courseName: "JavaScript",
+      time: "3h",
+      price: 200000,
+      deadline: "January",
+      teacher: "Sirojiddin",
+      type: "online",
+    },
+    {
+      courseName: "React Native",
+      time: "3h",
+      price: 1000000,
+      deadline: "February",
+      teacher: "Mirzohid",
+      type: "online",
+    },
+    {
+      courseName: "JavaScript",
+      time: "3h",
+      price: 200000,
+      deadline: "January",
+      teacher: "Sirojiddin",
+      type: "online",
+    },
+    {
+      courseName: "React Native",
+      time: "3h",
+      price: 1000000,
+      deadline: "February",
+      teacher: "Mirzohid",
+      type: "online",
+    },
+  ];
+
+  const courseLayout = document.getElementById("courseList");
+
+  for (let i = 0; i < courseList.length; i++) {
+    const course = document.createElement("div");
+    course.id = "courseId";
+    course.className = "course";
+    courseLayout.append(course);
+
+    const imageDiv = document.createElement("div");
+    imageDiv.className = "image-container";
+
+    const image = document.createElement("img");
+    image.src = "/course-list/js.png";
+    imageDiv.append(image);
+    course.append(imageDiv);
+
+    courseDetail = document.createElement("div");
+    courseDetail.className = "course-details";
+    courseDetail.id = "courseId";
+    course.append(courseDetail);
+
+    const topDiv = document.createElement("div");
+    topDiv.className = "top";
+    courseDetail.append(topDiv);
+
+    const topLeft = document.createElement("div");
+    topLeft.className = "left";
+    topDiv.append(topLeft);
+
+    const topButton = document.createElement("Button");
+    topButton.textContent = "Buy";
+    topLeft.append(topButton);
+
+    const courseSpan = document.createElement("span");
+    courseSpan.id = "courseName";
+    courseSpan.textContent = courseList[i].courseName;
+    topLeft.append(courseSpan);
+
+    const spanCourse = document.createElement("span");
+    spanCourse.id = "courseTime";
+    spanCourse.textContent = courseList[i].time;
+    topLeft.append(spanCourse);
+
+    const topSpan = document.createElement("span");
+    topSpan.id = "coursePrice";
+    topSpan.textContent = courseList[i].price;
+    topLeft.append(topSpan);
+
+    const rightDiv = document.createElement("div");
+    rightDiv.className = "right";
+    topDiv.append(rightDiv);
+
+    const courseDeadlineSpan = document.createElement("span");
+    courseDeadlineSpan.id = "courseDeadline";
+    courseDeadlineSpan.textContent = courseList[i].deadline;
+    rightDiv.append(courseDeadlineSpan);
+
+    const courseTeacherSpan = document.createElement("span");
+    courseTeacherSpan.id = "courseTeacher";
+    courseTeacherSpan.textContent = courseList[i].teacher;
+    rightDiv.append(courseTeacherSpan);
+
+    const courseTypeSpan = document.createElement("span");
+    courseTypeSpan.id = "courseType";
+    courseTypeSpan.textContent = courseList[i].type;
+    rightDiv.append(courseTypeSpan);
+
+    const bottomSection = document.createElement("div");
+    bottomSection.className = "bottom";
+    courseDetail.append(bottomSection);
+
+    const addToCartButton = document.createElement("button");
+    addToCartButton.textContent = "Add to Cart";
+    bottomSection.append(addToCartButton);
+
+    const buttonShare = document.createElement("button");
+    buttonShare.textContent = "Share";
+    buttonShare.className = "share";
+    bottomSection.append(buttonShare);
+  }
+
   const addName = document.getElementById("btn");
   let input = "";
   const message = document.querySelector("#inputName");
@@ -141,6 +317,26 @@ window.onload = async function () {
     leftSide.className = "empty-left";
     return;
   }
+
+  carObj.isUsed = true;
+  const values = Object.values(carObj);
+  console.log(values);
+
+  const carValues = document.createElement("span");
+
+  carValues.innerHTML = values;
+  karraLayout.append(carValues);
+
+  const entry = document.createElement("span");
+  const entries = Object.entries(carObj);
+  entry.innerHTML = entries;
+  karraLayout.append(entry);
+
+  const mainLayout = document.getElementById("main-layout");
+
+  mainLayout.addEventListener("scroll", function (event) {
+    console.log(event);
+  });
 };
 
 function addName(name) {
@@ -157,4 +353,20 @@ function clearName() {
 function goToLogin() {
   console.log("Click");
   window.location.replace("/auth/login.html");
+}
+
+function goToTodoPage() {
+  window.location.replace("/features/todo.html");
+}
+
+function logout() {
+  const getUserInfo = localStorage.getItem("loginInfo");
+  const userInfo = {
+    name: getUserInfo.userNameValue,
+    password: getUserInfo.userPasswordValue,
+    email: getUserInfo.userEmailValue,
+    loggedIn: false,
+  };
+  localStorage.setItem("loginInfo", userInfo);
+  window.location.replace("/auth/login");
 }

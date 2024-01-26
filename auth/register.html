@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/register.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="layout">
+        <h1>Registration</h1>
+        <div class="input-container">
+          <input type="text" placeholder="Enter your name" id="name" />
+        </div>
+        <div class="input-container">
+          <input type="text" placeholder="Enter your email" id="email" />
+        </div>
+        <div class="input-container">
+          <input type="password" placeholder="Create password" id="password" />
+        </div>
+        <div class="input-container">
+          <input
+            type="password"
+            placeholder="Confirm password"
+            id="confirmPassword"
+          />
+        </div>
+        <div class="register-terms">
+          <input type="checkbox" name="terms" id="terms" />
+          <label for="terms"> I accept terms & conditions</label><br />
+        </div>
+        <button id="submit">Register now</button>
+        <span class="already-have-account"
+          >Already have an account ?
+          <span class="login-btn">Login now</span></span
+        >
+      </div>
+    </div>
+    <div class="create-form-backdrop" id="backdrop">
+      <div class="backdrop-inner" id="backdropInner">
+        <div class="close-backdrop-box">
+          <img src="/assets/close-create-todo.svg" alt="" />
+        </div>
+        <div class="todo-list-box create-todo-form" id="createTodoForm">
+          <span>Successfully created</span>
+        </div>
+      </div>
+    </div>
+    <script src="/js/register.js"></script>
+  </body>
+</html>

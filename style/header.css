@@ -10,6 +10,7 @@
     color: white;
     font-weight: 500;
     font-family: sans-serif;
+     
 }
 
 .header-container>a {
@@ -25,7 +26,7 @@
     gap: 0.5rem;
 }
 
-.right-container>a {
+.right-container>span {
     cursor: pointer;
     text-decoration: none;
     color: white;

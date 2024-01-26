@@ -106,3 +106,14 @@ label a {
     color: #fff;
     text-decoration: none;
 }
+.auth{
+    display: flex;
+    align-items: flex-end !important;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+}
+.auth span{
+    color: azure;
+    font-size: 1rem !important;
+    cursor: pointer;
+}
